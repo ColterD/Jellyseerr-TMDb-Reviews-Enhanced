@@ -21,9 +21,9 @@
 ### **Prerequisites**
 
 - A userscript manager extension installed in your browser:
-  - [Tampermonkey](https://www.tampermonkey.net/) (Chrome, Firefox, Edge, Safari, etc.)
-  - [Violentmonkey](https://violentmonkey.github.io/)
-  - [Greasemonkey](https://www.greasespot.net/) (Firefox)
+  - [Violentmonkey](https://violentmonkey.github.io/) (Prefered!  Open-Source)
+  - [Tampermonkey](https://www.tampermonkey.net/) (Closed Source - Chrome, Firefox, Edge, Safari, etc.)
+  - [Greasemonkey](https://www.greasespot.net/) (Outdated)
 
 ### **One-Click Installation**
 
