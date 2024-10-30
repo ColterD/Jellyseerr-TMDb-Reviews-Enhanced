@@ -69,7 +69,7 @@ Ensure you have a userscript manager extension installed in your browser. The fo
        ```
      - **Log Level:**
        ```javascript
-       const logLevel = 'info'; // Options: 'off', 'info', 'verbose'
+       const logLevel = 'off'; // Options: 'off', 'info', 'verbose'
        ```
      - **Language Code:**
        ```javascript
