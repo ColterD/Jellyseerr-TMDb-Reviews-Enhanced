@@ -7,7 +7,7 @@
 
 ## 📚 Overview
 
-**Jellyseerr TMDb Reviews Enhanced** is a userscript that seamlessly integrates the latest reviews from [The Movie Database (TMDb)](https://www.themoviedb.org/) directly into your [Jellyseerr](https://github.com/Fallenbagel/jellyseerr) movie and TV show pages. Enhance your content discovery experience with up-to-date reviews embedded right within your Jellyseerr interface.
+**Jellyseerr TMDb Reviews Enhanced** is a userscript that integrates the latest reviews from [The Movie Database (TMDb)](https://www.themoviedb.org/) directly into your [Jellyseerr](https://github.com/Fallenbagel/jellyseerr) movie and TV show pages. Enhance your content discovery with up-to-date reviews seamlessly embedded in your Jellyseerr interface.
 
 ## 🎯 Features
 
@@ -25,32 +25,27 @@
 
 Ensure you have a userscript manager extension installed in your browser. The following are recommended:
 
-- **[Violentmonkey](https://violentmonkey.github.io/)** (Open-Source)
+- **[Violentmonkey](https://violentmonkey.github.io/)** (**Recommended!** Open-Source)
 - **[Tampermonkey](https://www.tampermonkey.net/)** (Closed Source - Chrome, Firefox, Edge, Safari, etc.)
-- **[Greasemonkey](https://www.greasespot.net/)** (Outdated)
+- **[Greasemonkey](https://www.greasespot.net/)** (**Outdated**)
 
 ### 🔗 One-Click Installation
 
 1. **Click the Installation Link:**
 
-   [Install Jellyseerr TMDb Reviews Enhanced](https://github.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/raw/main/jellyseerr-tmdb-reviews-enhanced.user.js)
+   [Install Jellyseerr TMDb Reviews Enhanced](https://raw.githubusercontent.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/main/jellyseerr-tmdb-reviews-enhanced.user.js)
 
 2. **Confirm Installation:**
-
+   
    - Your userscript manager (e.g., Violentmonkey, Tampermonkey) will detect the script and prompt you with installation details.
    - Click **"Install"** or **"Save"** to add the script to your manager.
 
-### 📂 Manual Installation
-
-1. **Download the Userscript:**
-
-   - Navigate to the [Releases](https://github.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/releases) section of this repository.
-   - Download the latest `jellyseerr-tmdb-reviews-enhanced.user.js` file.
-
-2. **Install via Userscript Manager:**
-
-   - Open your userscript manager dashboard.
-   - Add a new script and paste the contents of the downloaded `.user.js` file.
+3. **Configure the Script:**
+   
+   - After installation, open your userscript manager dashboard.
+   - Locate **"Jellyseerr TMDb Reviews Enhanced"** and click **"Edit"**.
+   - Replace `'YOUR_TMDB_API_KEY'` with your actual TMDb API Key.
+   - Adjust other settings as desired (e.g., `enableCaching`, `maxReviews`).
    - Save the script.
 
 ### 🌐 Custom Installation for Other Sites
@@ -58,17 +53,17 @@ Ensure you have a userscript manager extension installed in your browser. The fo
 If you wish to use **Jellyseerr TMDb Reviews Enhanced** on your own website or a different URL pattern, follow these steps:
 
 1. **Open the Userscript Manager:**
-
+   
    - Go to your userscript manager dashboard (Violentmonkey, Tampermonkey, Greasemonkey).
 
 2. **Edit the Script:**
-
-   - Locate **"Jellyseerr TMDb Reviews Enhanced"** in your scripts list.
+   
+   - Find **"Jellyseerr TMDb Reviews Enhanced"** in your scripts list.
    - Click **"Edit"**.
 
 3. **Modify the `@match` Pattern:**
-
-   - Find the `@match` directive in the metadata block:
+   
+   - Locate the `@match` directive in the metadata block:
      ```javascript
      // @match        https://request.colter.plus/*
      ```
@@ -77,25 +72,25 @@ If you wish to use **Jellyseerr TMDb Reviews Enhanced** on your own website or a
        ```javascript
        // @match        https://yourwebsite.com/*
        ```
-   - **Note:** Ensure the match pattern accurately corresponds to the pages where you want the script to run.
+   - **Note:** Ensure that the match pattern correctly corresponds to the pages where you want the script to run.
 
 4. **Save the Script:**
-
+   
    - After making changes, save the script to apply the new match pattern.
 
 ## ⚙️ Configuration
 
 1. **Obtain a TMDb API Key:**
-
+   
    - Sign up on [TMDb](https://www.themoviedb.org/).
-   - Navigate to account settings and generate an API key.
+   - Navigate to your account settings and generate an API key.
 
 2. **Edit the Userscript:**
-
+   
    - Open your userscript manager dashboard.
    - Edit **"Jellyseerr TMDb Reviews Enhanced"**.
-   - Upon first run, the script will prompt you to enter your TMDb API Key. Enter your key when prompted.
-   - **Adjust Settings as Needed:**
+   - Replace `'YOUR_TMDB_API_KEY'` with your TMDb API Key.
+   - Modify other settings as needed:
      - **Enable Caching:**
        ```javascript
        const enableCaching = true; // Set to true to enable caching
@@ -112,48 +107,78 @@ If you wish to use **Jellyseerr TMDb Reviews Enhanced** on your own website or a
        ```javascript
        const maxReviews = 3; // Set the number of reviews to display
        ```
-   - **Save the Script:**  
-     - After making changes, save the script to apply the new settings.
+   - Save the script after making changes.
 
-## 🖥️ Usage
+## 🛠️ Hosting the Userscript on GitHub for One-Click Installation
 
-1. **Navigate to a Media Page:**
+To enable users to install your userscript with a single click, ensure that your script is hosted in a way that userscript managers can access it directly. Here's how you can achieve this:
 
-   - Open Jellyseerr and navigate to a movie or TV show page (e.g., `https://request.colter.plus/movie/harry-potter-and-the-prisoner-of-azkaban`).
+1. **Host the Userscript in the Repository:**
+   
+   - Ensure that your userscript file (`jellyseerr-tmdb-reviews-enhanced.user.js`) is located in the root directory of your GitHub repository.
 
-2. **View TMDb Reviews:**
+2. **Use the Raw GitHub URL for Installation:**
+   
+   - GitHub serves raw files through `raw.githubusercontent.com`. Use this URL to create a direct link for installation.
+   - **Installation Link Format:**
+     ```
+     https://raw.githubusercontent.com/YourUsername/Jellyseerr-TMDb-Reviews-Enhanced/main/jellyseerr-tmdb-reviews-enhanced.user.js
+     ```
+   - **Replace `YourUsername`** with your actual GitHub username.
 
-   - After the page loads, a **"Latest Reviews from TMDb"** section will appear below the existing reviews.
-   - Each review includes the author's name, rating, date, and a truncated version of the review content with a "continue reading" link if applicable.
+3. **Ensure Correct Metadata for Auto-Updating:**
+   
+   - In your userscript's metadata block, set the `@updateURL` and `@downloadURL` to point to the raw GitHub URL.
+   - **Example:**
+     ```javascript
+     // @updateURL    https://raw.githubusercontent.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/main/jellyseerr-tmdb-reviews-enhanced.user.js
+     // @downloadURL  https://raw.githubusercontent.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/main/jellyseerr-tmdb-reviews-enhanced.user.js
+     ```
+   - This ensures that userscript managers can check for updates automatically.
 
-3. **Clear TMDb Cache:**
+4. **Provide the Installation Link in README:**
+   
+   - As shown in the **One-Click Installation** section above, include a direct link to the raw userscript file.
+   - **Example:**
+     ```markdown
+     [Install Jellyseerr TMDb Reviews Enhanced](https://raw.githubusercontent.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/main/jellyseerr-tmdb-reviews-enhanced.user.js)
+     ```
 
-   - Click the **"Clear TMDb Cache"** button located below the reviews section.
-   - Confirm the action in the prompt.
-   - The script will clear the cached reviews and refresh the reviews section.
+5. **Optional: Create a GitHub Release (Recommended for Versioning):**
+   
+   - While not mandatory, creating a release helps in managing versions and provides a stable link for userscript managers.
+   - **Steps to Create a Release:**
+     1. Navigate to your repository on GitHub.
+     2. Click on the **"Releases"** tab.
+     3. Click **"Draft a new release"**.
+     4. Tag the release (e.g., `v1.0.0`), provide a title and description.
+     5. Upload the `jellyseerr-tmdb-reviews-enhanced.user.js` file as a binary.
+     6. Click **"Publish release"**.
+   - **Update Metadata:**
+     - After creating a release, update the `@updateURL` and `@downloadURL` in your userscript to point to the release's raw file.
+     - **Example:**
+       ```javascript
+       // @updateURL    https://github.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/releases/latest/download/jellyseerr-tmdb-reviews-enhanced.user.js
+       // @downloadURL  https://github.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/releases/latest/download/jellyseerr-tmdb-reviews-enhanced.user.js
+       ```
+   
+   > **Note:** Creating releases is beneficial for version control and ensuring users receive updates smoothly.
 
-## 🛠️ Development
+## 📣 Recommendations
 
-### 📝 Contributing
+- **Use Violentmonkey:**  
+  Among userscript managers, [Violentmonkey](https://violentmonkey.github.io/) is **Recommended!** for its open-source nature and robust feature set.
+
+## 🛠️ Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
-
-### 🐛 Reporting Issues
-
-If you encounter any issues or have feature requests, please [open an issue](https://github.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/issues) on GitHub.
-
-## 📈 Auto-Updating
-
-The script is configured to auto-update via userscript managers like Violentmonkey and Tampermonkey. Ensure that the `@updateURL` and `@downloadURL` in the script metadata point to the raw GitHub URL.
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ## 📞 Contact
 
 For any questions or feedback, feel free to reach out via [GitHub Issues](https://github.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/issues).
 
----
+## 📄 License
 
-*Happy Streaming! 🎬*
+This project is licensed under the [MIT License](LICENSE).
+
+---
