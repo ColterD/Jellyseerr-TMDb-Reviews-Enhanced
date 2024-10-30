@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jellyseerr TMDb Reviews Enhanced
 // @namespace    https://github.com/yourusername/jellyseerr-tmdb-reviews
-// @version      4.7
+// @version      1.0
 // @description  Add the latest TMDb reviews to Jellyseerr movie and TV show pages with enhancements
 // @match        https://request.colter.plus/*
 // @grant        GM_xmlhttpRequest
