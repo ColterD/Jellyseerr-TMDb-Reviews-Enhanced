@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jellyseerr TMDb Reviews Enhanced
 // @namespace    https://github.com/yourusername/jellyseerr-tmdb-reviews
-// @version      1.0
+// @version      1.0.4
 // @description  Add the latest TMDb reviews to Jellyseerr movie and TV show pages with enhancements
 // @match        https://request.colter.plus/*
 // @grant        GM_xmlhttpRequest
@@ -649,8 +649,8 @@
             const readMoreLink = document.createElement('a');
             readMoreLink.href = 'https://www.themoviedb.org/review/' + review.id;
             readMoreLink.target = '_blank';
-            readMoreLink.textContent = 'continue reading';
-            readMoreLink.setAttribute('aria-label', 'Continue reading the full review');
+            readMoreLink.textContent = 'keep reading...';
+            readMoreLink.setAttribute('aria-label', 'Keep reading the full review');
             applyStyles(readMoreLink, styles.link);
             truncatedContentDiv.appendChild(readMoreLink);
             logVerbose('Read more link added to truncated content.');
