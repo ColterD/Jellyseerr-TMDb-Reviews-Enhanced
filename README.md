@@ -48,36 +48,6 @@ Ensure you have a userscript manager extension installed in your browser. The fo
    - Adjust other settings as desired (e.g., `enableCaching`, `maxReviews`).
    - Save the script.
 
-### 🌐 Custom Installation for Other Sites
-
-If you wish to use **Jellyseerr TMDb Reviews Enhanced** on your own website or a different URL pattern, follow these steps:
-
-1. **Open the Userscript Manager:**
-   
-   - Go to your userscript manager dashboard (Violentmonkey, Tampermonkey, Greasemonkey).
-
-2. **Edit the Script:**
-   
-   - Find **"Jellyseerr TMDb Reviews Enhanced"** in your scripts list.
-   - Click **"Edit"**.
-
-3. **Modify the `@match` Pattern:**
-   
-   - Locate the `@match` directive in the metadata block:
-     ```javascript
-     // @match        https://request.colter.plus/*
-     ```
-   - Replace `https://request.colter.plus/*` with the URL pattern of your website.
-     - **Example for `https://yourwebsite.com/*`:**
-       ```javascript
-       // @match        https://yourwebsite.com/*
-       ```
-   - **Note:** Ensure that the match pattern correctly corresponds to the pages where you want the script to run.
-
-4. **Save the Script:**
-   
-   - After making changes, save the script to apply the new match pattern.
-
 ## ⚙️ Configuration
 
 1. **Obtain a TMDb API Key:**
@@ -108,6 +78,36 @@ If you wish to use **Jellyseerr TMDb Reviews Enhanced** on your own website or a
        const maxReviews = 3; // Set the number of reviews to display
        ```
    - Save the script after making changes.
+
+### 🌐 Custom Installation for Other Sites
+
+If you wish to use **Jellyseerr TMDb Reviews Enhanced** on your own website or a different URL pattern, follow these steps:
+
+1. **Open the Userscript Manager:**
+   
+   - Go to your userscript manager dashboard (Violentmonkey, Tampermonkey, Greasemonkey).
+
+2. **Edit the Script:**
+   
+   - Find **"Jellyseerr TMDb Reviews Enhanced"** in your scripts list.
+   - Click **"Edit"**.
+
+3. **Modify the `@match` Pattern:**
+   
+   - Locate the `@match` directive in the metadata block:
+     ```javascript
+     // @match        https://request.colter.plus/*
+     ```
+   - Replace `https://request.colter.plus/*` with the URL pattern of your website.
+     - **Example for `https://yourwebsite.com/*`:**
+       ```javascript
+       // @match        https://yourwebsite.com/*
+       ```
+   - **Note:** Ensure that the match pattern correctly corresponds to the pages where you want the script to run.
+
+4. **Save the Script:**
+   
+   - After making changes, save the script to apply the new match pattern.
 
 ## 📣 Recommendations
 
