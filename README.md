@@ -29,6 +29,7 @@ Ensure you have a userscript manager extension installed in your browser. The fo
 - **[Tampermonkey](https://www.tampermonkey.net/)** (Closed Source - Chrome, Firefox, Edge, Safari, etc.)
 - **[Greasemonkey](https://www.greasespot.net/)** (**Outdated**)
 
+
 ### 🔗 One-Click Installation
 
 1. **Click the Installation Link:**
@@ -47,6 +48,7 @@ Ensure you have a userscript manager extension installed in your browser. The fo
    - Replace `'YOUR_TMDB_API_KEY'` with your actual TMDb API Key.
    - Adjust other settings as desired (e.g., `enableCaching`, `maxReviews`).
    - Save the script.
+
 
 ## ⚙️ Configuration
 
@@ -78,6 +80,8 @@ Ensure you have a userscript manager extension installed in your browser. The fo
        const maxReviews = 3; // Set the number of reviews to display
        ```
    - Save the script after making changes.
+
+---
 
 ### 🌐 Custom Installation for Other Sites
 
