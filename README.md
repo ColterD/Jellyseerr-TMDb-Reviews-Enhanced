@@ -41,13 +41,13 @@ Ensure you have a userscript manager extension installed in your browser. The fo
    - Your userscript manager (e.g., Violentmonkey, Tampermonkey) will detect the script and prompt you with installation details.
    - Click **"Install"** or **"Save"** to add the script to your manager.
 
-3. **Configure the Script:**
+3. **Go to the Jellyseerr Website and Pick a Movie:**
    
-   - After installation, open your userscript manager dashboard.
-   - Locate **"Jellyseerr TMDb Reviews Enhanced"** and click **"Edit"**.
-   - Replace `'YOUR_TMDB_API_KEY'` with your actual TMDb API Key.
-   - Adjust other settings as desired (e.g., `enableCaching`, `maxReviews`).
-   - Save the script.
+   - After installation, go to the Jellyseerr website.
+   - Pick a movie you want to read reviews for.
+   - A dialog box will pop up asking you for your TMDB API Key.
+   - Either ask me (if I'm giving you this script) or provide your own TMDB API Key.
+   - Click ok.
 
 
 ## ⚙️ Configuration
