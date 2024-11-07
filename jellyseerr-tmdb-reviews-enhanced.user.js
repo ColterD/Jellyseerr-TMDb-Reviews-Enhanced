@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name         Jellyseerr TMDb Reviews Enhanced
-// @namespace    https://github.com/yourusername/jellyseerr-tmdb-reviews
-// @version      1.0.5a
+// @namespace    https://github.com/ColterD/jellyseerr-tmdb-reviews
+// @version      1.0.6a
 // @description  Add the latest TMDb reviews to Jellyseerr movie and TV show pages with enhancements
 // @match        https://request.colter.plus/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @connect      api.themoviedb.org
-// @updateURL    https://github.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/raw/main/jellyseerr-tmdb-reviews-enhanced.user.js
-// @downloadURL  https://github.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/raw/main/jellyseerr-tmdb-reviews-enhanced.user.js
+// @updateURL    https://raw.githubusercontent.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/main/jellyseerr-tmdb-reviews-enhanced.user.js?version=1.0.6a
+// @downloadURL  https://raw.githubusercontent.com/ColterD/Jellyseerr-TMDb-Reviews-Enhanced/main/jellyseerr-tmdb-reviews-enhanced.user.js?version=1.0.6a
 // ==/UserScript==
 
 (async function() {
@@ -28,7 +28,7 @@
         }
     }
     const enableCaching = true; // Set to true to enable caching (boolean, not string)
-    const logLevel = 'off'; // Set to 'off', 'info', or 'verbose'
+    const logLevel = 'verbose'; // Set to 'off', 'info', or 'verbose'
     const languageCode = 'en-US'; // Replace with your preferred language code
     const maxReviews = 3; // Set the number of reviews to display
 
@@ -293,6 +293,7 @@
     }
 
     function checkUrlChange() {
+        let timeout = null;
         const observer = new MutationObserver(function(mutations, me) {
             if (location.href !== lastUrl) {
                 lastUrl = location.href;
@@ -301,7 +302,10 @@
                     logInfo("User navigated to a new media page");
                     const newTitleElement = document.querySelector('h1[data-testid="media-title"]');
                     if (newTitleElement) {
-                        processPage(newTitleElement);
+                        if (timeout) clearTimeout(timeout);
+                        timeout = setTimeout(() => {
+                            processPage(newTitleElement);
+                        }, 1000); // 1-second debounce
                     }
                 }
             }
@@ -348,36 +352,43 @@
         mediaType = window.location.pathname.includes('/movie/') ? 'movie' : 'tv';
 
         // Generate a unique key for caching
-        const cacheKey = `tmdb_reviews_${mediaType}_${mediaTitle}_${mediaYear}_${languageCode}`;
+        const cacheKey = `tmdb_reviews_${mediaType}_${encodeURIComponent(mediaTitle)}_${mediaYear}_${languageCode}`;
 
-        // Check if data is cached
-        let cachedData = getCachedData(cacheKey);
-        if (cachedData) {
-            logInfo("Using cached data for", mediaTitle);
-            insertReviews(cachedData.reviews, cachedData.mediaId, mediaType);
+        if (enableCaching) {
+            // Check if data is cached
+            let cachedData = getCachedData(cacheKey);
+            if (cachedData) {
+                logInfo("Using cached data for", mediaTitle);
+                insertReviews(cachedData.reviews, cachedData.mediaId, mediaType);
+                return;
+            }
         } else {
-            // Fetch media ID from TMDb
-            try {
-                const mediaId = await fetchMediaId(mediaTitle, mediaYear, mediaType);
-                if (mediaId) {
-                    // Fetch reviews for the media
-                    const reviews = await fetchReviews(mediaId, mediaType);
-                    if (reviews && reviews.length > 0) {
+            logInfo("Caching is disabled. Fetching fresh data for", mediaTitle);
+        }
+
+        // Fetch media ID from TMDb
+        try {
+            const mediaId = await fetchMediaId(mediaTitle, mediaYear, mediaType);
+            if (mediaId) {
+                // Fetch reviews for the media
+                const reviews = await fetchReviews(mediaId, mediaType);
+                if (reviews && reviews.length > 0) {
+                    if (enableCaching) {
                         // Cache the data
                         setCachedData(cacheKey, { reviews: reviews, mediaId: mediaId });
-
-                        // Insert the reviews into the page
-                        insertReviews(reviews, mediaId, mediaType);
-                    } else {
-                        displayMessage('No reviews found for this media on TMDb.');
                     }
+
+                    // Insert the reviews into the page
+                    insertReviews(reviews, mediaId, mediaType);
                 } else {
-                    displayMessage('Media not found on TMDb.');
+                    displayMessage('No reviews found for this media on TMDb.');
                 }
-            } catch (error) {
-                logError(error);
-                displayMessage('An error occurred while fetching reviews.');
+            } else {
+                displayMessage('Media not found on TMDb.');
             }
+        } catch (error) {
+            logError(error);
+            displayMessage('An error occurred while fetching reviews.');
         }
     }
 
